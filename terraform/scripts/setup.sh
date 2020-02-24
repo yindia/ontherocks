@@ -54,14 +54,14 @@ helm install \
   --version v0.3.0
 
 #Setup Mongo Credentials in template  
-sed -i -e "s/INPUTUSERNAME/$MONGOUSERNAME/g" ./k8s/config/kustomization.yaml
+sed -i -e "s/INPUTUSERNAME/betaapp/g" ./k8s/config/kustomization.yaml
 sed -i -e "s/INPUTPASSWORD/$MONGOPASSWORD/g" ./k8s/config/kustomization.yaml
 
 #  create configmap and lestencrypt certificate
 ./kustomize build ./k8s/config/ | kubectl apply -f -
 
 #Setup Mongo Credentials in Mongodb template  
-sed -i -e "s/INPUTUSERNAME/$MONGOUSERNAME/g" ./helm/mongodb/values.yaml
+sed -i -e "s/INPUTUSERNAME/betaapp/g" ./helm/mongodb/values.yaml
 sed -i -e "s/INPUTPASSWORD/$MONGOPASSWORD/g" ./helm/mongodb/values.yaml
 sed -i -e "s/INPUTROOTPASSWORD/$MONGOROOTPASSWORD/g" ./helm/mongodb/values.yaml
 
