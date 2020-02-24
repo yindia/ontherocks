@@ -3,7 +3,6 @@
 ![CI](https://github.com/evalsocket/ontherocks/workflows/CI/badge.svg) 
 
 ### Directory Structure
-
 ```
 ├── helm
 │   │   ├── base
