@@ -1,0 +1,21 @@
+name: Builddatacenter
+
+on: repository_dispatch
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 'Checkout'
+      uses: actions/checkout@master
+    - name: build-datacenter
+      run: |
+        make setup-ci
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        MONGODB_PASSWORD : ${{secrets.MONGODB_PASSWORD}}
+        MONGODB_ROOT_PASSWORD : ${{secrets.MONGODB_PASSWORD}}
+        S3_BUCKET : ${{secrets.S3_BUCKET}}
