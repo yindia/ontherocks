@@ -1,0 +1,23 @@
+{{ if .Values.ingress.enabled }}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: "{{  .Chart.Name }}-ingress"
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    certmanager.k8s.io/cluster-issuer: "{{ .Values.certificate }}"
+    kubernetes.io/tls-acme: “true”
+spec:
+  rules:
+  — host: "{{ .Values.domain }}"
+    http:
+      paths:
+      — path: /
+        backend:
+          serviceName: "{{  .Chart.Name }}-service"
+          servicePort: "{{ .Values.servicePort }}"
+  tls: 
+   - hosts:
+     - "{{ .Values.domain }}"
+     secretName: myingress-cert 
+{{ end }}
