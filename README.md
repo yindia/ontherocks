@@ -66,6 +66,8 @@
      cat ./terraform/export/kubeconfig.yaml  | base64
      # Copy the base64 token and update the github repository secret with name KUBE_CONFIG_DATA
      #  (cat ~/terraform/export/kubeconfig.yaml | base64) - create base64 token
+     # Set  AWS_ACCESS_KEY_ID in github repository secret
+     # Set AWS_SECRET_ACCESS_KEY in github repository secret
      # Also Update IMAGE_REGISTRY  in github Secret
      
     ```
